@@ -1,4 +1,4 @@
-package com.github.MarioBezerra.tutorial1.Producer;
+package com.github.MarioBezerra.tutorial1.FirstSteps.Producer;
 
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -7,13 +7,13 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class ProducerDemoWithCallback {
+public class ProducerDemoKeys {
 
     private static final String bootstrapServerAdress = "127.0.0.1:9092";
 
     public static void main(String[] args) {
 
-        Logger logger = LoggerFactory.getLogger(ProducerDemoWithCallback.class);
+        Logger logger = LoggerFactory.getLogger(ProducerDemoKeys.class);
 
         //create Producer properties
         Properties properties = new Properties();
@@ -27,7 +27,13 @@ public class ProducerDemoWithCallback {
 
         for (int i = 0 ; i < 10 ; i++){
         //create a Producer Record
-        ProducerRecord<String, String> record = new ProducerRecord<>("first_topic", "hello world" + Integer.toString(i));
+        String topic = "second_topic";
+        String value = "Hello world" + Integer.toString(i);
+        String key = "id_" + Integer.toString(i); //providing a key guarantees that the same key always go to the same partition
+
+        ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
+
+        logger.info("Key: " + key); //log the key
 
         //send data - asynchronous
         producer.send(record, new Callback() {

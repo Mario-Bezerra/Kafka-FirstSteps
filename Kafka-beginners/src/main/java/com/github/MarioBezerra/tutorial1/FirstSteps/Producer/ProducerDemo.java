@@ -1,4 +1,4 @@
-package com.github.MarioBezerra.tutorial1.Producer;
+package com.github.MarioBezerra.tutorial1.FirstSteps.Producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

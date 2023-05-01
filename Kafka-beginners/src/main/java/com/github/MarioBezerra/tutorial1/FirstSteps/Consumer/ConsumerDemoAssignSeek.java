@@ -1,4 +1,4 @@
-package com.github.MarioBezerra.tutorial1.Consumer;
+package com.github.MarioBezerra.tutorial1.FirstSteps.Consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
